@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-export const AddCategory = (props) => {
+export const AddCategory = ({ onNewCategory}) => {
 
     const [ inputValue, setInputValue ] = useState('');
 
@@ -11,8 +11,9 @@ export const AddCategory = (props) => {
 
     const onSubmit = ( event ) =>{
         event.preventDefault();
-        props.AddCategory (inputValue);
-        
+        if( inputValue.trim() <= 1 ) return;
+        onNewCategory (inputValue);
+        setInputValue('')
     }
 
     return (
@@ -20,7 +21,9 @@ export const AddCategory = (props) => {
             <input 
             type="text"
             placeholder="Buscar gifts" 
-            onChange={ (event) => onInputChange(event) }/>
+            onChange={ (event) => onInputChange(event) }
+            value={ inputValue }
+            />
         </form>
     )
 }
