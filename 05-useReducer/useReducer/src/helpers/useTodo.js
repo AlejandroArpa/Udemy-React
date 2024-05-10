@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from 'react';
-import { todoReducer } from '../todoReducer';
+import { todoReducer } from '../useReducer/todoReducer';
 
 const initialState = JSON.parse (localStorage.getItem( 'todos')) || [];
 
@@ -35,7 +35,7 @@ export const useTodo = () => {
 		dispatch( action );
 	}
 
-  return (
+    return (
     {todos, onNewTodo, onRmClic, onToggleTodo  }
-  )
+    )
 }
